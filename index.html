@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donnez votre avis</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f2f5;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+            max-width: 520px;
+            width: 100%;
+            padding: 40px;
+        }
+
+        .logo-container {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .logo-container img {
+            max-height: 80px;
+            max-width: 200px;
+            object-fit: contain;
+        }
+
+        .logo-placeholder {
+            width: 80px;
+            height: 80px;
+            background: #e8edf2;
+            border-radius: 50%;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #8899aa;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a1a2e;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #6b7280;
+            font-size: 14px;
+            margin-bottom: 32px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            color: #374151;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 12px 14px;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            font-size: 14px;
+            font-family: inherit;
+            color: #1f2937;
+            transition: border-color 0.2s;
+            background: #fafafa;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #2563eb;
+            background: #fff;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Etoiles */
+        .stars-container {
+            display: flex;
+            gap: 8px;
+            flex-direction: row-reverse;
+            justify-content: flex-end;
+            padding: 4px 0;
+        }
+
+        .stars-container input {
+            display: none;
+        }
+
+        .stars-container label {
+            cursor: pointer;
+            font-size: 32px;
+            color: #d1d5db;
+            transition: color 0.15s;
+            margin-bottom: 0;
+        }
+
+        .stars-container label:hover,
+        .stars-container label:hover ~ label,
+        .stars-container input:checked ~ label {
+            color: #f59e0b;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 14px;
+            background: #2563eb;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-top: 8px;
+        }
+
+        .btn-submit:hover {
+            background: #1d4ed8;
+        }
+
+        .btn-submit:active {
+            transform: scale(0.98);
+        }
+
+        /* Message de confirmation */
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .success-message .checkmark {
+            width: 64px;
+            height: 64px;
+            background: #10b981;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 28px;
+            color: #fff;
+        }
+
+        .success-message h2 {
+            color: #1a1a2e;
+            margin-bottom: 8px;
+        }
+
+        .success-message p {
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 24px;
+            }
+
+            h1 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- FORMULAIRE -->
+    <div id="form-section">
+        <div class="logo-container">
+            <!--
+                POUR AJOUTER VOTRE LOGO :
+                1. Placez votre fichier logo (ex: logo.png) dans le meme dossier
+                2. Decommentez la ligne <img> ci-dessous
+                3. Supprimez le bloc "logo-placeholder"
+            -->
+            <!-- <img src="logo.png" alt="Logo"> -->
+            <div class="logo-placeholder">Logo</div>
+        </div>
+
+        <h1>Donnez-nous votre avis</h1>
+        <p class="subtitle">Votre retour nous aide a nous ameliorer</p>
+
+        <!--
+            CONFIGURATION EMAIL :
+            Remplacez "rouattara205@gmail.com" par votre adresse email.
+            Lors du premier envoi, FormSubmit vous demandera de confirmer votre email.
+        -->
+        <form id="review-form" action="https://formsubmit.co/rouattara205@gmail.com" method="POST">
+            <!-- Config FormSubmit -->
+            <input type="hidden" name="_subject" value="Nouvel avis client">
+            <input type="hidden" name="_captcha" value="true">
+            <input type="hidden" name="_template" value="table">
+            <input type="text" name="_honey" style="display:none">
+
+            <div class="form-group">
+                <label for="name">Nom complet</label>
+                <input type="text" id="name" name="Nom" required placeholder="Jean Dupont">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="Email" required placeholder="jean@exemple.com">
+            </div>
+
+            <div class="form-group">
+                <label>Note</label>
+                <div class="stars-container">
+                    <input type="radio" id="star5" name="Note" value="5" required>
+                    <label for="star5" title="Excellent">&#9733;</label>
+                    <input type="radio" id="star4" name="Note" value="4">
+                    <label for="star4" title="Tres bien">&#9733;</label>
+                    <input type="radio" id="star3" name="Note" value="3">
+                    <label for="star3" title="Bien">&#9733;</label>
+                    <input type="radio" id="star2" name="Note" value="2">
+                    <label for="star2" title="Moyen">&#9733;</label>
+                    <input type="radio" id="star1" name="Note" value="1">
+                    <label for="star1" title="Mauvais">&#9733;</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="service">Service concerne</label>
+                <select id="service" name="Service">
+                    <option value="">-- Choisir --</option>
+                    <option value="Accueil">Accueil</option>
+                    <option value="Qualite du service">Qualite du service</option>
+                    <option value="Rapport qualite/prix">Rapport qualite/prix</option>
+                    <option value="Autre">Autre</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="message">Votre avis</label>
+                <textarea id="message" name="Avis" required placeholder="Decrivez votre experience..."></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit">Envoyer mon avis</button>
+        </form>
+    </div>
+
+    <!-- CONFIRMATION -->
+    <div class="success-message" id="success-section">
+        <div class="checkmark">&#10003;</div>
+        <h2>Merci pour votre avis !</h2>
+        <p>Votre retour a bien ete envoye. Nous vous remercions pour le temps accorde.</p>
+    </div>
+</div>
+
+<script>
+    // Redirection apres soumission FormSubmit
+    const params = new URLSearchParams(window.location.search);
+    if (params.has('success')) {
+        document.getElementById('form-section').style.display = 'none';
+        document.getElementById('success-section').style.display = 'block';
+    }
+
+    // Ajout du parametre _next pour la redirection
+    const form = document.getElementById('review-form');
+    const currentUrl = window.location.href.split('?')[0];
+    const nextInput = document.createElement('input');
+    nextInput.type = 'hidden';
+    nextInput.name = '_next';
+    nextInput.value = currentUrl + '?success=true';
+    form.appendChild(nextInput);
+</script>
+
+</body>
+</html>
