@@ -383,8 +383,9 @@
                     <label class="radio-option"><input type="radio" name="Decouverte" value="Bouche à oreille"><span>Bouche à oreille</span></label>
                     <label class="radio-option"><input type="radio" name="Decouverte" value="Google"><span>Google</span></label>
                     <label class="radio-option"><input type="radio" name="Decouverte" value="En passant devant"><span>En passant devant</span></label>
-                    <label class="radio-option"><input type="radio" name="Decouverte" value="Autre"><span>Autre</span></label>
+                    <label class="radio-option"><input type="radio" name="Decouverte" value="Autre" id="decouverte-autre"><span>Autre</span></label>
                 </div>
+                <input type="text" id="decouverte-autre-text" name="Decouverte-autre" placeholder="Précisez comment vous nous avez découvert..." style="display:none; margin-top:10px;">
             </div>
 
             <div class="form-group">
@@ -418,19 +419,24 @@
 
 <script>
     // Afficher le champ "Autre" quand sélectionné
-    document.querySelectorAll('input[name="Service"]').forEach(function(radio) {
-        radio.addEventListener('change', function() {
-            var autreText = document.getElementById('service-autre-text');
-            if (this.id === 'service-autre') {
-                autreText.style.display = 'block';
-                autreText.required = true;
-            } else {
-                autreText.style.display = 'none';
-                autreText.required = false;
-                autreText.value = '';
-            }
+    function setupAutreField(radioName, autreId, textId) {
+        document.querySelectorAll('input[name="' + radioName + '"]').forEach(function(radio) {
+            radio.addEventListener('change', function() {
+                var autreText = document.getElementById(textId);
+                if (this.id === autreId) {
+                    autreText.style.display = 'block';
+                    autreText.required = true;
+                } else {
+                    autreText.style.display = 'none';
+                    autreText.required = false;
+                    autreText.value = '';
+                }
+            });
         });
-    });
+    }
+
+    setupAutreField('Service', 'service-autre', 'service-autre-text');
+    setupAutreField('Decouverte', 'decouverte-autre', 'decouverte-autre-text');
 
     // FormSubmit redirection
     const params = new URLSearchParams(window.location.search);
