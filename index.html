@@ -312,8 +312,9 @@
                     <label class="radio-option"><input type="radio" name="Service" value="Soin capillaire"><span>Soin capillaire</span></label>
                     <label class="radio-option"><input type="radio" name="Service" value="Entretien beauté"><span>Entretien perruque</span></label>
                     <label class="radio-option"><input type="radio" name="Service" value="Achat de perruques"><span>Achat de perruques</span></label>
-                    <label class="radio-option"><input type="radio" name="Service" value="Autre"><span>Autre</span></label>
+                    <label class="radio-option"><input type="radio" name="Service" value="Autre" id="service-autre"><span>Autre</span></label>
                 </div>
+                <input type="text" id="service-autre-text" name="Service-autre" placeholder="Précisez le service..." style="display:none; margin-top:10px;">
             </div>
 
             <div class="form-group">
@@ -416,6 +417,21 @@
 </div>
 
 <script>
+    // Afficher le champ "Autre" quand sélectionné
+    document.querySelectorAll('input[name="Service"]').forEach(function(radio) {
+        radio.addEventListener('change', function() {
+            var autreText = document.getElementById('service-autre-text');
+            if (this.id === 'service-autre') {
+                autreText.style.display = 'block';
+                autreText.required = true;
+            } else {
+                autreText.style.display = 'none';
+                autreText.required = false;
+                autreText.value = '';
+            }
+        });
+    });
+
     // FormSubmit redirection
     const params = new URLSearchParams(window.location.search);
     if (params.has('success')) {
