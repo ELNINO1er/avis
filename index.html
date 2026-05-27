@@ -18,77 +18,28 @@
             --gold: #d4a853;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Inter', sans-serif;
             background: var(--gray-light);
             min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             padding: 20px;
         }
 
-        /* Navigation tabs */
-        .tabs {
-            display: flex;
-            justify-content: center;
-            gap: 0;
-            max-width: 600px;
-            margin: 0 auto 24px;
-        }
-
-        .tab-btn {
-            flex: 1;
-            padding: 14px 20px;
-            border: 2px solid var(--black);
-            background: var(--white);
-            color: var(--black);
-            font-family: 'Inter', sans-serif;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            letter-spacing: 0.5px;
-        }
-
-        .tab-btn:first-child {
-            border-radius: 8px 0 0 8px;
-        }
-
-        .tab-btn:last-child {
-            border-radius: 0 8px 8px 0;
-        }
-
-        .tab-btn.active {
-            background: var(--black);
-            color: var(--white);
-        }
-
-        .tab-btn:hover:not(.active) {
-            background: var(--red-light);
-            border-color: var(--red);
-            color: var(--red);
-        }
-
-        /* Container principal */
         .container {
             background: var(--white);
             border-radius: 16px;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.06);
             max-width: 600px;
             width: 100%;
-            margin: 0 auto;
             padding: 40px;
             border-top: 4px solid var(--red);
         }
 
-        .page { display: none; }
-        .page.active { display: block; }
-
-        /* Logo */
         .logo-container {
             text-align: center;
             margin-bottom: 20px;
@@ -117,9 +68,7 @@
             margin-bottom: 6px;
         }
 
-        h1 span {
-            color: var(--red);
-        }
+        h1 span { color: var(--red); }
 
         .subtitle {
             text-align: center;
@@ -129,10 +78,37 @@
             margin-bottom: 32px;
         }
 
-        /* Formulaire */
-        .form-group {
-            margin-bottom: 20px;
+        /* Sections numerotees */
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 16px;
+            color: var(--black);
+            margin: 28px 0 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--red-light);
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
+
+        .section-title .num {
+            background: var(--red);
+            color: var(--white);
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .section-title:first-of-type { margin-top: 0; }
+
+        .form-group { margin-bottom: 18px; }
 
         label {
             display: block;
@@ -160,10 +136,7 @@
             border-color: var(--red);
         }
 
-        textarea {
-            resize: vertical;
-            min-height: 110px;
-        }
+        textarea { resize: vertical; min-height: 100px; }
 
         /* Etoiles */
         .stars-container {
@@ -190,6 +163,41 @@
             color: var(--gold);
         }
 
+        /* Options radio/checkbox stylisees */
+        .radio-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 4px 0;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            background: var(--gray-light);
+            border: 1.5px solid #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 13px;
+            color: var(--gray-dark);
+        }
+
+        .radio-option:hover {
+            border-color: var(--red);
+            background: var(--red-light);
+        }
+
+        .radio-option input {
+            width: auto;
+            accent-color: var(--red);
+            padding: 0;
+        }
+
+        .radio-option input:checked + span { color: var(--red); font-weight: 600; }
+
         .btn-submit {
             width: 100%;
             padding: 14px;
@@ -201,7 +209,7 @@
             font-weight: 600;
             cursor: pointer;
             transition: background 0.2s;
-            margin-top: 8px;
+            margin-top: 16px;
             letter-spacing: 0.5px;
             font-family: 'Inter', sans-serif;
         }
@@ -238,120 +246,9 @@
         .success-message p {
             color: var(--gray);
             font-size: 14px;
-        }
-
-        /* =================== QUIZ =================== */
-        .quiz-intro {
-            text-align: center;
-            margin-bottom: 28px;
-        }
-
-        .quiz-intro p {
-            color: var(--gray);
-            font-size: 14px;
-            font-weight: 300;
-        }
-
-        .quiz-question {
-            background: var(--gray-light);
-            border-radius: 12px;
-            padding: 24px;
-            margin-bottom: 20px;
-            border-left: 4px solid var(--red);
-        }
-
-        .quiz-question h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 16px;
-            color: var(--black);
-            margin-bottom: 4px;
-        }
-
-        .quiz-question .q-number {
-            font-size: 11px;
-            color: var(--red);
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-bottom: 6px;
-        }
-
-        .quiz-options {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            margin-top: 14px;
-        }
-
-        .quiz-option {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 12px 14px;
-            background: var(--white);
-            border: 1.5px solid #e0e0e0;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-size: 14px;
-            color: var(--gray-dark);
-        }
-
-        .quiz-option:hover {
-            border-color: var(--red);
-            background: var(--red-light);
-        }
-
-        .quiz-option input {
-            width: auto;
-            accent-color: var(--red);
-        }
-
-        .quiz-option.selected {
-            border-color: var(--red);
-            background: var(--red-light);
-            font-weight: 500;
-        }
-
-        .quiz-result {
-            display: none;
-            text-align: center;
-            padding: 30px 20px;
-            background: var(--gray-light);
-            border-radius: 12px;
-            margin-top: 20px;
-        }
-
-        .quiz-result h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 20px;
-            color: var(--black);
-            margin-bottom: 8px;
-        }
-
-        .quiz-result p {
-            color: var(--gray-dark);
-            font-size: 14px;
             line-height: 1.6;
         }
 
-        .quiz-result .result-icon {
-            font-size: 48px;
-            margin-bottom: 12px;
-        }
-
-        .quiz-score {
-            display: inline-block;
-            background: var(--red);
-            color: var(--white);
-            padding: 6px 18px;
-            border-radius: 20px;
-            font-weight: 600;
-            font-size: 14px;
-            margin: 12px 0;
-        }
-
-        /* Footer */
         .footer {
             text-align: center;
             margin-top: 20px;
@@ -362,255 +259,154 @@
         @media (max-width: 480px) {
             .container { padding: 24px; }
             h1 { font-size: 22px; }
-            .tab-btn { font-size: 12px; padding: 12px 10px; }
+            .radio-group { flex-direction: column; }
         }
     </style>
 </head>
 <body>
 
-<!-- Onglets -->
-<div class="tabs">
-    <button class="tab-btn active" onclick="showPage('avis')">Donner mon avis</button>
-    <button class="tab-btn" onclick="showPage('quiz')">Quiz Beaute</button>
-</div>
-
 <div class="container">
-
-    <!-- ============ PAGE AVIS ============ -->
-    <div id="page-avis" class="page active">
-        <div id="form-section">
-            <div class="logo-container">
-                <img src="logo10.jpeg" alt="Alexia Hair Style Beauty">
-            </div>
-            <div class="divider"></div>
-
-            <h1>Donnez-nous votre <span>avis</span></h1>
-            <p class="subtitle">Votre retour nous aide a offrir le meilleur service</p>
-
-            <form id="review-form" action="https://formsubmit.co/rouattara205@gmail.com" method="POST">
-                <input type="hidden" name="_subject" value="Nouvel avis client - Alexia Hair Style">
-                <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_template" value="table">
-                <input type="text" name="_honey" style="display:none">
-
-                <div class="form-group">
-                    <label for="name">Nom complet</label>
-                    <input type="text" id="name" name="Nom" required placeholder="Votre nom">
-                </div>
-
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="Email" required placeholder="votre@email.com">
-                </div>
-
-                <div class="form-group">
-                    <label>Note</label>
-                    <div class="stars-container">
-                        <input type="radio" id="star5" name="Note" value="5" required>
-                        <label for="star5" title="Excellent">&#9733;</label>
-                        <input type="radio" id="star4" name="Note" value="4">
-                        <label for="star4" title="Tres bien">&#9733;</label>
-                        <input type="radio" id="star3" name="Note" value="3">
-                        <label for="star3" title="Bien">&#9733;</label>
-                        <input type="radio" id="star2" name="Note" value="2">
-                        <label for="star2" title="Moyen">&#9733;</label>
-                        <input type="radio" id="star1" name="Note" value="1">
-                        <label for="star1" title="Mauvais">&#9733;</label>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="service">Service concerne</label>
-                    <select id="service" name="Service">
-                        <option value="">-- Choisir --</option>
-                        <option value="Pose de meches">Pose de meches</option>
-                        <option value="Perruques">Perruques</option>
-                        <option value="Coiffure">Coiffure</option>
-                        <option value="Soin capillaire">Soin capillaire</option>
-                        <option value="Entretien beaute">Entretien beaute</option>
-                        <option value="Accueil & conseil">Accueil & conseil</option>
-                        <option value="Rapport qualite/prix">Rapport qualite/prix</option>
-                        <option value="Autre">Autre</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="message">Votre avis</label>
-                    <textarea id="message" name="Avis" required placeholder="Parlez-nous de votre experience chez Alexia Hair Style..."></textarea>
-                </div>
-
-                <button type="submit" class="btn-submit">Envoyer mon avis</button>
-            </form>
-        </div>
-
-        <div class="success-message" id="success-section">
-            <div class="checkmark">&#10003;</div>
-            <h2>Merci pour votre avis !</h2>
-            <p>Votre retour a bien ete envoye.<br>L'equipe Alexia Hair Style vous remercie.</p>
-        </div>
-    </div>
-
-    <!-- ============ PAGE QUIZ ============ -->
-    <div id="page-quiz" class="page">
+    <div id="form-section">
         <div class="logo-container">
             <img src="logo10.jpeg" alt="Alexia Hair Style Beauty">
         </div>
         <div class="divider"></div>
 
-        <h1>Quiz <span>Beaute</span></h1>
-        <div class="quiz-intro">
-            <p>Testez vos connaissances sur les meches, perruques et soins capillaires !</p>
-        </div>
+        <h1>Donnez-nous votre <span>avis</span></h1>
+        <p class="subtitle">Votre retour nous aide a offrir le meilleur service beaute</p>
 
-        <div id="quiz-questions">
-            <!-- Question 1 -->
-            <div class="quiz-question" data-correct="b">
-                <div class="q-number">Question 1 / 6</div>
-                <h3>Quelle est la meilleure facon d'entretenir une perruque en cheveux naturels ?</h3>
-                <div class="quiz-options">
-                    <label class="quiz-option"><input type="radio" name="q1" value="a"> La laver tous les jours au shampoing classique</label>
-                    <label class="quiz-option"><input type="radio" name="q1" value="b"> La laver toutes les 1 a 2 semaines avec un shampoing doux</label>
-                    <label class="quiz-option"><input type="radio" name="q1" value="c"> Ne jamais la laver pour garder sa forme</label>
+        <form id="review-form" action="https://formsubmit.co/rouattara205@gmail.com" method="POST">
+            <input type="hidden" name="_subject" value="&#9733; Nouvel avis client - Alexia Hair Style Beauty">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="box">
+            <input type="text" name="_honey" style="display:none">
+            <input type="hidden" name="_autoresponse" value="Merci pour votre avis ! L'equipe Alexia Hair Style Beauty a bien recu votre retour. Nous le prendrons en compte pour continuer a vous offrir le meilleur service. A tres bientot !">
+
+            <!-- SECTION 1 : Informations -->
+            <div class="section-title"><span class="num">1</span> Vos informations</div>
+
+            <div class="form-group">
+                <label for="name">Nom complet</label>
+                <input type="text" id="name" name="01 - Nom" required placeholder="Votre nom complet">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="02 - Email" required placeholder="votre@email.com">
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Telephone (optionnel)</label>
+                <input type="tel" id="phone" name="03 - Telephone" placeholder="Votre numero">
+            </div>
+
+            <!-- SECTION 2 : Votre experience -->
+            <div class="section-title"><span class="num">2</span> Votre experience</div>
+
+            <div class="form-group">
+                <label>Quel service avez-vous utilise ?</label>
+                <div class="radio-group">
+                    <label class="radio-option"><input type="radio" name="04 - Service" value="Pose de meches" required><span>Pose de meches</span></label>
+                    <label class="radio-option"><input type="radio" name="04 - Service" value="Perruque"><span>Perruque</span></label>
+                    <label class="radio-option"><input type="radio" name="04 - Service" value="Tissage"><span>Tissage</span></label>
+                    <label class="radio-option"><input type="radio" name="04 - Service" value="Coiffure"><span>Coiffure</span></label>
+                    <label class="radio-option"><input type="radio" name="04 - Service" value="Soin capillaire"><span>Soin capillaire</span></label>
+                    <label class="radio-option"><input type="radio" name="04 - Service" value="Entretien beaute"><span>Entretien beaute</span></label>
+                    <label class="radio-option"><input type="radio" name="04 - Service" value="Achat de produits"><span>Achat de produits</span></label>
+                    <label class="radio-option"><input type="radio" name="04 - Service" value="Autre"><span>Autre</span></label>
                 </div>
             </div>
 
-            <!-- Question 2 -->
-            <div class="quiz-question" data-correct="c">
-                <div class="q-number">Question 2 / 6</div>
-                <h3>Quel type de meche est le plus durable et naturel ?</h3>
-                <div class="quiz-options">
-                    <label class="quiz-option"><input type="radio" name="q2" value="a"> Les meches synthetiques haute temperature</label>
-                    <label class="quiz-option"><input type="radio" name="q2" value="b"> Les meches en fibre mixte</label>
-                    <label class="quiz-option"><input type="radio" name="q2" value="c"> Les meches en cheveux naturels (virgin hair)</label>
+            <div class="form-group">
+                <label>Note globale</label>
+                <div class="stars-container">
+                    <input type="radio" id="star5" name="05 - Note globale" value="5/5 - Excellent" required>
+                    <label for="star5" title="Excellent">&#9733;</label>
+                    <input type="radio" id="star4" name="05 - Note globale" value="4/5 - Tres bien">
+                    <label for="star4" title="Tres bien">&#9733;</label>
+                    <input type="radio" id="star3" name="05 - Note globale" value="3/5 - Bien">
+                    <label for="star3" title="Bien">&#9733;</label>
+                    <input type="radio" id="star2" name="05 - Note globale" value="2/5 - Moyen">
+                    <label for="star2" title="Moyen">&#9733;</label>
+                    <input type="radio" id="star1" name="05 - Note globale" value="1/5 - Mauvais">
+                    <label for="star1" title="Mauvais">&#9733;</label>
                 </div>
             </div>
 
-            <!-- Question 3 -->
-            <div class="quiz-question" data-correct="b">
-                <div class="q-number">Question 3 / 6</div>
-                <h3>Avant de poser des meches, il est recommande de :</h3>
-                <div class="quiz-options">
-                    <label class="quiz-option"><input type="radio" name="q3" value="a"> Couper ses cheveux tres courts</label>
-                    <label class="quiz-option"><input type="radio" name="q3" value="b"> Faire un soin hydratant sur ses cheveux naturels</label>
-                    <label class="quiz-option"><input type="radio" name="q3" value="c"> Appliquer de la colle directement sur le cuir chevelu</label>
+            <div class="form-group">
+                <label>Comment jugez-vous la qualite des produits/meches ?</label>
+                <div class="radio-group">
+                    <label class="radio-option"><input type="radio" name="06 - Qualite produits" value="Excellente" required><span>Excellente</span></label>
+                    <label class="radio-option"><input type="radio" name="06 - Qualite produits" value="Bonne"><span>Bonne</span></label>
+                    <label class="radio-option"><input type="radio" name="06 - Qualite produits" value="Moyenne"><span>Moyenne</span></label>
+                    <label class="radio-option"><input type="radio" name="06 - Qualite produits" value="A ameliorer"><span>A ameliorer</span></label>
                 </div>
             </div>
 
-            <!-- Question 4 -->
-            <div class="quiz-question" data-correct="a">
-                <div class="q-number">Question 4 / 6</div>
-                <h3>Comment proteger ses cheveux naturels sous une perruque ?</h3>
-                <div class="quiz-options">
-                    <label class="quiz-option"><input type="radio" name="q4" value="a"> Porter un bonnet en satin en dessous</label>
-                    <label class="quiz-option"><input type="radio" name="q4" value="b"> Appliquer du gel fixant chaque jour</label>
-                    <label class="quiz-option"><input type="radio" name="q4" value="c"> Ne rien faire, la perruque protege naturellement</label>
+            <div class="form-group">
+                <label>Comment evaluez-vous l'accueil et le conseil ?</label>
+                <div class="radio-group">
+                    <label class="radio-option"><input type="radio" name="07 - Accueil et conseil" value="Tres satisfait(e)" required><span>Tres satisfait(e)</span></label>
+                    <label class="radio-option"><input type="radio" name="07 - Accueil et conseil" value="Satisfait(e)"><span>Satisfait(e)</span></label>
+                    <label class="radio-option"><input type="radio" name="07 - Accueil et conseil" value="Neutre"><span>Neutre</span></label>
+                    <label class="radio-option"><input type="radio" name="07 - Accueil et conseil" value="Insatisfait(e)"><span>Insatisfait(e)</span></label>
                 </div>
             </div>
 
-            <!-- Question 5 -->
-            <div class="quiz-question" data-correct="c">
-                <div class="q-number">Question 5 / 6</div>
-                <h3>Quelle huile est reconnue pour fortifier les cheveux ?</h3>
-                <div class="quiz-options">
-                    <label class="quiz-option"><input type="radio" name="q5" value="a"> L'huile de tournesol</label>
-                    <label class="quiz-option"><input type="radio" name="q5" value="b"> L'huile de palme</label>
-                    <label class="quiz-option"><input type="radio" name="q5" value="c"> L'huile de ricin</label>
+            <div class="form-group">
+                <label>Le rapport qualite/prix vous semble :</label>
+                <div class="radio-group">
+                    <label class="radio-option"><input type="radio" name="08 - Rapport qualite-prix" value="Tres correct" required><span>Tres correct</span></label>
+                    <label class="radio-option"><input type="radio" name="08 - Rapport qualite-prix" value="Correct"><span>Correct</span></label>
+                    <label class="radio-option"><input type="radio" name="08 - Rapport qualite-prix" value="Un peu cher"><span>Un peu cher</span></label>
+                    <label class="radio-option"><input type="radio" name="08 - Rapport qualite-prix" value="Trop cher"><span>Trop cher</span></label>
                 </div>
             </div>
 
-            <!-- Question 6 -->
-            <div class="quiz-question" data-correct="b">
-                <div class="q-number">Question 6 / 6</div>
-                <h3>Combien de temps peut-on garder un tissage sans l'abimer ?</h3>
-                <div class="quiz-options">
-                    <label class="quiz-option"><input type="radio" name="q6" value="a"> 6 mois sans probleme</label>
-                    <label class="quiz-option"><input type="radio" name="q6" value="b"> 4 a 6 semaines maximum</label>
-                    <label class="quiz-option"><input type="radio" name="q6" value="c"> 1 an si on en prend soin</label>
+            <!-- SECTION 3 : Pour aller plus loin -->
+            <div class="section-title"><span class="num">3</span> Pour aller plus loin</div>
+
+            <div class="form-group">
+                <label>Comment avez-vous connu Alexia Hair Style ?</label>
+                <div class="radio-group">
+                    <label class="radio-option"><input type="radio" name="09 - Comment connu" value="Reseaux sociaux" required><span>Reseaux sociaux</span></label>
+                    <label class="radio-option"><input type="radio" name="09 - Comment connu" value="Bouche a oreille"><span>Bouche a oreille</span></label>
+                    <label class="radio-option"><input type="radio" name="09 - Comment connu" value="Google"><span>Google</span></label>
+                    <label class="radio-option"><input type="radio" name="09 - Comment connu" value="En passant devant"><span>En passant devant</span></label>
+                    <label class="radio-option"><input type="radio" name="09 - Comment connu" value="Autre"><span>Autre</span></label>
                 </div>
             </div>
-        </div>
 
-        <button class="btn-submit" onclick="showResults()">Voir mes resultats</button>
+            <div class="form-group">
+                <label>Recommanderiez-vous Alexia Hair Style a vos proches ?</label>
+                <div class="radio-group">
+                    <label class="radio-option"><input type="radio" name="10 - Recommandation" value="Oui, absolument !" required><span>Oui, absolument !</span></label>
+                    <label class="radio-option"><input type="radio" name="10 - Recommandation" value="Probablement oui"><span>Probablement oui</span></label>
+                    <label class="radio-option"><input type="radio" name="10 - Recommandation" value="Pas certain(e)"><span>Pas certain(e)</span></label>
+                    <label class="radio-option"><input type="radio" name="10 - Recommandation" value="Non"><span>Non</span></label>
+                </div>
+            </div>
 
-        <div class="quiz-result" id="quiz-result">
-            <div class="result-icon" id="result-icon"></div>
-            <h3 id="result-title"></h3>
-            <div class="quiz-score" id="result-score"></div>
-            <p id="result-text"></p>
-        </div>
+            <div class="form-group">
+                <label for="message">Un commentaire, une suggestion ? (optionnel)</label>
+                <textarea id="message" name="11 - Commentaire" placeholder="Partagez votre experience, vos suggestions d'amelioration ou ce que vous avez aime..."></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit">Envoyer mon avis</button>
+        </form>
     </div>
 
+    <!-- CONFIRMATION -->
+    <div class="success-message" id="success-section">
+        <div class="checkmark">&#10003;</div>
+        <h2>Merci pour votre avis !</h2>
+        <p>Votre retour a bien ete envoye.<br>L'equipe <strong>Alexia Hair Style Beauty</strong> vous remercie<br>pour le temps que vous nous avez accorde.</p>
+    </div>
 </div>
 
 <p class="footer">Alexia Hair Style Beauty</p>
 
 <script>
-    // Tabs
-    function showPage(page) {
-        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-        if (page === 'avis') {
-            document.getElementById('page-avis').classList.add('active');
-            document.querySelectorAll('.tab-btn')[0].classList.add('active');
-        } else {
-            document.getElementById('page-quiz').classList.add('active');
-            document.querySelectorAll('.tab-btn')[1].classList.add('active');
-        }
-    }
-
-    // Style des options quiz au clic
-    document.querySelectorAll('.quiz-option input').forEach(input => {
-        input.addEventListener('change', function() {
-            const parent = this.closest('.quiz-options');
-            parent.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('selected'));
-            this.closest('.quiz-option').classList.add('selected');
-        });
-    });
-
-    // Resultats du quiz
-    function showResults() {
-        const questions = document.querySelectorAll('.quiz-question');
-        let score = 0;
-        let total = questions.length;
-        let allAnswered = true;
-
-        questions.forEach((q, i) => {
-            const selected = q.querySelector('input:checked');
-            if (!selected) { allAnswered = false; return; }
-            if (selected.value === q.dataset.correct) score++;
-        });
-
-        if (!allAnswered) {
-            alert('Veuillez repondre a toutes les questions avant de voir vos resultats.');
-            return;
-        }
-
-        const result = document.getElementById('quiz-result');
-        const icon = document.getElementById('result-icon');
-        const title = document.getElementById('result-title');
-        const scoreEl = document.getElementById('result-score');
-        const text = document.getElementById('result-text');
-
-        scoreEl.textContent = score + ' / ' + total;
-
-        if (score <= 2) {
-            icon.textContent = '\u{1F48C}';
-            title.textContent = 'Debutante en beaute';
-            text.textContent = 'Pas de souci, l\'equipe Alexia Hair Style est la pour vous conseiller ! Passez nous voir en salon pour decouvrir nos produits et services.';
-        } else if (score <= 4) {
-            icon.textContent = '\u{2728}';
-            title.textContent = 'Belle connaisseuse !';
-            text.textContent = 'Vous avez de bonnes bases ! Nos specialistes peuvent vous aider a perfectionner votre routine beaute.';
-        } else {
-            icon.textContent = '\u{1F451}';
-            title.textContent = 'Experte beaute !';
-            text.textContent = 'Impressionnant ! Vous maitrisez le sujet. Venez decouvrir notre gamme premium chez Alexia Hair Style !';
-        }
-
-        result.style.display = 'block';
-        result.scrollIntoView({ behavior: 'smooth' });
-    }
-
     // FormSubmit redirection
     const params = new URLSearchParams(window.location.search);
     if (params.has('success')) {
